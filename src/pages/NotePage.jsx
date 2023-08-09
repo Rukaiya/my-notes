@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Body = () => {
+const NotePage = () => {
   return (
     <div>
-      Body
+      
     </div>
   )
 }
 
-export default Body
-Body
+export default NotePage
