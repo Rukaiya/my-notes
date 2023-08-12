@@ -1,6 +1,6 @@
-import React from 'react'
+import { Link } from "react-router-dom";
 
-const ListItem = ({note}) => {
+const ListItem = ({ note }) => {
   return (
     <div>
       {note.body}
