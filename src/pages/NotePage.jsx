@@ -27,6 +27,7 @@ const NotePage = () => {
       },
       body: JSON.stringify({ ...note, 'updated': new Date() })
     })
+    navigate('/')
   }
 
   let deleteNote = () => {
@@ -44,7 +45,6 @@ const NotePage = () => {
     if (noteId !== 'new') {
       if ( !note.body) deleteNote()
       else  updateNote()
-      
     }
     else {
       if (note !== null) createNote()
@@ -52,6 +52,7 @@ const NotePage = () => {
   }
 
   let createNote = () => {
+    console.log('Create note');
     fetch(`http://localhost:3000/notes`, {
       method: 'POST',
       headers: {
@@ -59,6 +60,7 @@ const NotePage = () => {
       },
       body: JSON.stringify({ ...note, 'updated': new Date() })
     })
+    navigate('/')
   }
 
   return (
@@ -67,8 +69,11 @@ const NotePage = () => {
         <Link to={'/'}>
           <p onClick={handleSubmit}><span>&#8592;</span> Back</p>
         </Link>
-
+        { noteId !== 'new' ? (
         <button onClick={deleteNote}>Delete</button>
+        ) : (
+        <button onClick={handleSubmit}>Done</button>
+        )}
       </div>
 
       <p>{note?.body}</p>
